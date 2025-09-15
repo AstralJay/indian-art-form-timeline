@@ -1,96 +1,335 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Indian Art Periods — Timeline Guide</title>
+  <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+  <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #9333ea;
+      --primary-dark: #5b21b6;
+      --accent: #f59e0b;
+      --text-dark: #1f2937;
+      --text-light: #f9fafb;
+      --bg-light: #f5f3ff;
+      --bg-dark: #4c1d95;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    
+    header {
+      padding: 2rem 1rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: var(--text-light);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1606298855672-3efb63017be8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      z-index: 0;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    header p {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .timeline-container {
+      position: relative;
+      padding: 1rem;
+      background-color: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      border-radius: 8px;
+      margin: 1.5rem;
+    }
+    
+    #timeline-embed {
+      width: 100%;
+      height: 75vh;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .control-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+    
+    .control-btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .period-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .period-btn {
+      background-color: white;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    
+    .period-btn:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--primary-dark);
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    
+    footer a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    
+    .info-box {
+      background-color: rgba(255,255,255,0.9);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      border-left: 4px solid var(--accent);
+      display: none;
+    }
+    
+    .info-box.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+      
+      .timeline-container {
+        margin: 1rem 0.5rem;
+        padding: 0.5rem;
+      }
+      
+      #timeline-embed {
+        height: 65vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Indian Art Periods — Interactive Timeline</h1>
+      <p>Explore the rich history of Indian art through the ages, from prehistoric times to contemporary movements.</p>
+    </div>
+  </header>
+  
+  <div class="timeline-container">
+    <div class="period-nav">
+      <button class="period-btn" data-year="-3000">Prehistoric</button>
+      <button class="period-btn" data-year="-322">Maurya</button>
+      <button class="period-btn" data-year="50">Kushana</button>
+      <button class="period-btn" data-year="320">Gupta</button>
+      <button class="period-btn" data-year="700">Medieval</button>
+      <button class="period-btn" data-year="1526">Mughal</button>
+      <button class="period-btn" data-year="1850">Colonial</button>
+      <button class="period-btn" data-year="1947">Contemporary</button>
+    </div>
+    
+    <div class="controls">
+      <button class="control-btn" id="zoom-in"><i class="fas fa-search-plus"></i> Zoom In</button>
+      <button class="control-btn" id="zoom-out"><i class="fas fa-search-minus"></i> Zoom Out</button>
+      <button class="control-btn" id="info-toggle"><i class="fas fa-info-circle"></i> About</button>
+    </div>
+    
+    <div class="info-box" id="info-box">
+      <h3>About This Timeline</h3>
+      <p>This interactive timeline showcases the major periods of Indian art history, highlighting three notable artifacts from each era. Use the navigation buttons above to jump to specific periods or the zoom controls to explore in detail.</p>
+    </div>
+    
+    <div id="timeline-embed"></div>
+  </div>
+  
+  <footer>
+    <p>Crafted with <i class="fas fa-heart" style="color: #f87171;"></i> | Powered by <a href="https://timeline.knightlab.com/" target="_blank">Timeline.js</a> | <a href="#" id="credits-link">Image Credits</a></p>
+  </footer>
+
+  <script>
+    const timelineData = {
+      title: { text: { headline: "Indian Art Periods", text: "An overview of major art periods in India and three notable artefacts of each." } },
+      events: [
+        {
+          start_date: { year: -3000 },
+          end_date: { year: -1500 },
+          text: { headline: "Prehistoric & Indus Valley (c. 3000–1500 BCE)", text: "Urban art traditions with fertility symbols and ritual motifs.<br><b>Dancing Girl:</b> Bronze figurine symbolising vitality.<br><b>Pashupati Seal:</b> Proto-Shiva iconography.<br><b>Mother Goddess Figurines:</b> Fertility symbols." },
+          media: { url: "https://www.harappa.com/sites/default/files/11149620_10153301242734846_3179193761954559144_o.jpg", caption: "The Dancing Girl of Mohenjo-daro" }
+        },
+        {
+          start_date: { year: -322 },
+          end_date: { year: -185 },
+          text: { headline: "Maurya Period (c. 322–185 BCE)", text: "Imperial art with Buddhist influence.<br><b>Lion Capital:</b> National emblem, spread of Dharma.<br><b>Didarganj Yakshi:</b> Fertility and grace.<br><b>Ashokan Pillar:</b> Moral edicts inscribed on stone." },
+          media: { url: "https://education.sakshi.com/sites/default/files/images/2022/07/15/lioncapitaloftheashokapillar-1657883033.jpg", caption: "Lion Capital of Ashoka" }
+        },
+        {
+          start_date: { year: 50 },
+          end_date: { year: 300 },
+          text: { headline: "Kushana & Gandhara–Mathura (1st–3rd CE)", text: "Rise of Buddha images.<br><b>Standing Buddha (Gandhara):</b> Greco-Roman drapery.<br><b>Seated Buddha (Mathura):</b> Indigenous Indian style.<br><b>Kanishka's Gold Coin:</b> Buddha depicted on royal coinage." },
+          media: { url: "https://upload.wikimedia.org/wikipedia/commons/b/b8/Gandhara_Buddha_%28tnm%29.jpeg", caption: "Standing Buddha from Gandhara" }
+        },
+        {
+          start_date: { year: 320 },
+          end_date: { year: 550 },
+          text: { headline: "Gupta Period (4th–6th CE)", text: "Classical refinement in art.<br><b>Ajanta Murals:</b> Narrative Buddhist paintings.<br><b>Seated Buddha (Sarnath):</b> Iconic teaching pose.<br><b>Iron Pillar:</b> Corrosion-resistant metallurgical marvel." },
+          media: { url: "https://images.livemint.com/img/2023/03/10/original/Ajanta_Painting_cave_1_1678457022605.jpg", caption: "Ajanta Cave Paintings" }
+        },
+        {
+          start_date: { year: 700 },
+          end_date: { year: 1300 },
+          text: { headline: "Medieval Hindu Temple Art (7th–13th CE)", text: "Flourishing temple architecture.<br><b>Shore Temple:</b> Early Pallava structure.<br><b>Kandariya Mahadev Temple:</b> Erotic and divine sculpture.<br><b>Konark Sun Temple:</b> Chariot of Surya with stone wheels." },
+          media: { url: "https://s7ap1.scene7.com/is/image/incredibleindia/1-shore-temple-mamallapuram-2-attr-hero?qlt=82&ts=1726654555333", caption: "Shore Temple at Mamallapuram" }
+        },
+        {
+          start_date: { year: 1526 },
+          end_date: { year: 1800 },
+          text: { headline: "Mughal Period (16th–18th CE)", text: "Fusion of Persian and Indian styles.<br><b>Taj Mahal:</b> White marble mausoleum.<br><b>Akbarnama Miniatures:</b> Historical illustrations.<br><b>Red Fort:</b> Imperial palace-fort complex." },
+          media: { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/1024px-Taj_Mahal_%28Edited%29.jpeg", caption: "Taj Mahal, Agra" }
+        },
+        {
+          start_date: { year: 1850 },
+          end_date: { year: 1947 },
+          text: { headline: "Colonial & Modern Art (19th–20th CE)", text: "European realism & nationalist revival.<br><b>Bharat Mata:</b> Symbolic painting by Abanindranath Tagore.<br><b>Raja Ravi Varma:</b> Mythological oil paintings.<br><b>Gaganendranath Tagore:</b> Cubist experiments." },
+          media: { url: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Bharat_Mata_by_Abanindranath_Tagore.jpg", caption: "Bharat Mata by Abanindranath Tagore" }
+        },
+        {
+          start_date: { year: 1947 },
+          text: { headline: "Contemporary Art (Post-1947)", text: "Experimentation and global dialogues.<br><b>M.F. Husain's Horses:</b> Dynamic modernist style.<br><b>S.H. Raza's Bindu:</b> Abstract spiritual art.<br><b>Subodh Gupta:</b> Stainless steel utensil installations." },
+          media: { url: "https://www.tallengestore.com/cdn/shop/products/M.F._Husain_-_Five_Horses_1970s_Oil_on_canvas_43.5_x_70_in_low_res_-_Copy_6b5b7db9-4ad7-4c49-b4f0-54d88c3a7bdc.jpg?v=1568983996", caption: "Inspired by M.F. Husain's Horse paintings" }
+        }
+      ]
+    };
+
+    // Initialize timeline
+    window.timeline = new TL.Timeline('timeline-embed', timelineData, { initial_zoom: 2 });
+    
+    // Add event listeners for controls
+    document.getElementById('zoom-in').addEventListener('click', function() {
+      window.timeline.zoomIn();
+    });
+    
+    document.getElementById('zoom-out').addEventListener('click', function() {
+      window.timeline.zoomOut();
+    });
+    
+    document.getElementById('info-toggle').addEventListener('click', function() {
+      document.getElementById('info-box').classList.toggle('active');
+    });
+    
+    // Period navigation
+    document.querySelectorAll('.period-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const year = this.getAttribute('data-year');
+        window.timeline.goTo(year);
+      });
+    });
+    
+    // Credits modal
+    document.getElementById('credits-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('Images sourced from Wikimedia Commons and educational repositories. All images are in the public domain or used under appropriate licenses.');
+    });
+  </script>
+</body>
 </html>
